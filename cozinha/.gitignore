@@ -1,0 +1,8 @@
+/vendor/
+.env
+/writable/
+*.log
+
+# Cruft de sistema operacional (Windows / Mac)
+.DS_Store
+Thumbs.db

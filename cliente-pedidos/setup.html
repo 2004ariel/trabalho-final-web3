@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurar Totem — Cliente Pedidos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="hero">
+      <div class="container" style="max-width: 460px">
+        <div class="brand-emoji mb-3">🍽️</div>
+        <h1 class="brand-logo display-5 mb-2">Configurar Totem</h1>
+        <p class="lead text-secondary mb-4">
+          Identifique este dispositivo antes de começar.
+        </p>
+
+        <form id="form-totem" class="text-start" novalidate>
+          <div class="mb-3">
+            <label for="totem-id" class="form-label">Número do totem</label>
+            <input
+              type="number"
+              min="1"
+              id="totem-id"
+              class="form-control form-control-lg"
+              required
+            />
+            <div id="erro-id" class="text-danger small mt-1 d-none">
+              Informe o número do totem.
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="totem-nome" class="form-label">
+              Nome do totem <span class="text-secondary">(opcional)</span>
+            </label>
+            <input
+              type="text"
+              id="totem-nome"
+              class="form-control form-control-lg"
+              placeholder="Ex: Mesa 5, Caixa 2"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-brand btn-lg w-100">
+            Configurar
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <!-- Lógica inline: setup.html NÃO usa js/totem.js (evita loop de redirect). -->
+    <script>
+      (function () {
+        "use strict";
+
+        const form = document.getElementById("form-totem");
+        const $id = document.getElementById("totem-id");
+        const $nome = document.getElementById("totem-nome");
+        const $erro = document.getElementById("erro-id");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const id = $id.value.trim();
+          if (!id) {
+            $erro.classList.remove("d-none");
+            $id.focus();
+            return;
+          }
+          $erro.classList.add("d-none");
+
+          localStorage.setItem("totem_id", id);
+          localStorage.setItem("totem_nome", $nome.value.trim());
+          window.location.href = "index.html";
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos — Cliente Pedidos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Barra superior -->
+    <nav class="navbar navbar-expand bg-white shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand brand-logo d-flex align-items-center gap-2" href="index.html">
+          <span class="brand-emoji">🍔</span> Cliente Pedidos
+        </a>
+        <a href="carrinho.html" class="btn btn-outline-dark position-relative">
+          🛒 Carrinho
+          <span
+            id="cart-total"
+            class="cart-badge ms-1 fw-semibold"
+          >R$ 0,00</span>
+          <span
+            id="cart-count"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+          >0</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <!-- Filtros por categoria -->
+      <div class="d-flex flex-wrap gap-2 mb-4" id="filtros">
+        <button class="btn btn-outline-secondary filtro-btn active" data-cat="todos">
+          Todos
+        </button>
+        <button class="btn btn-outline-secondary filtro-btn" data-cat="lanches">
+          Lanches
+        </button>
+        <button class="btn btn-outline-secondary filtro-btn" data-cat="bebidas">
+          Bebidas
+        </button>
+      </div>
+
+      <!-- Estados -->
+      <div id="loading" class="text-center text-secondary py-5">
+        <div class="spinner-border text-warning" role="status"></div>
+        <p class="mt-3">Carregando produtos…</p>
+      </div>
+
+      <div id="erro" class="alert alert-danger d-none" role="alert"></div>
+
+      <div id="vazio" class="text-center text-secondary py-5 d-none">
+        Nenhum produto nesta categoria.
+      </div>
+
+      <!-- Grade de produtos -->
+      <div
+        id="lista-produtos"
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3"
+      ></div>
+    </main>
+
+    <!-- Modal de quantidade -->
+    <div class="modal fade" id="modalQtd" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-produto-nome">Produto</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <p class="text-secondary mb-3" id="modal-produto-preco">R$ 0,00</p>
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+              <button class="btn btn-outline-secondary btn-lg" id="modal-menos">−</button>
+              <span class="fs-2 qtd-control" id="modal-qtd">1</span>
+              <button class="btn btn-outline-secondary btn-lg" id="modal-mais">+</button>
+            </div>
+            <div class="text-secondary">
+              Total do item:
+              <span class="produto-preco fs-5" id="modal-total">R$ 0,00</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-brand" id="modal-add">
+              Adicionar ao carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="js/totem.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/produtos.js"></script>
+  </body>
+</html>

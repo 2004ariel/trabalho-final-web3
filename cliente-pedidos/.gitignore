@@ -1,0 +1,6 @@
+# Laragon default page (não faz parte do projeto)
+index.php
+# Mac
+.DS_Store
+# Node (sem dependências, mas por precaução)
+node_modules/

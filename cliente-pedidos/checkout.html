@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout — Cliente Pedidos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand bg-white shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand brand-logo d-flex align-items-center gap-2" href="produtos.html">
+          <span class="brand-emoji">🍔</span> Cliente Pedidos
+        </a>
+        <a href="carrinho.html" class="btn btn-outline-secondary btn-sm">
+          ← Voltar ao carrinho
+        </a>
+      </div>
+    </nav>
+
+    <main class="container py-4" style="max-width: 640px">
+      <h1 class="h3 mb-4">Revisão do pedido</h1>
+
+      <div id="vazio" class="text-center text-secondary py-5 d-none">
+        <p>Não há itens para finalizar.</p>
+        <a href="produtos.html" class="btn btn-brand">Ver produtos</a>
+      </div>
+
+      <div id="conteudo">
+        <ul class="list-group mb-3" id="lista-itens"></ul>
+
+        <div class="card shadow-sm mb-4">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <span class="fs-5">Total a pagar</span>
+            <span class="fs-4 fw-bold produto-preco" id="total">R$ 0,00</span>
+          </div>
+        </div>
+
+        <div id="erro" class="alert alert-danger d-none" role="alert"></div>
+
+        <div class="d-flex justify-content-between gap-2">
+          <a href="carrinho.html" class="btn btn-outline-secondary btn-lg">
+            Voltar
+          </a>
+          <button class="btn btn-brand btn-lg flex-grow-1" id="btn-enviar">
+            Confirmar e Enviar
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="js/totem.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+  </body>
+</html>
