@@ -44,8 +44,13 @@ Toda a integração fica centralizada em [`js/api.js`](js/api.js). Para apontar
 para outro backend, altere **apenas** a constante no topo do arquivo:
 
 ```js
-// Mock server:        http://localhost:3001/api
-// Backend CI4 real:   http://localhost/projeto-ci4/api
+// Backend real (Windows/Laragon), padrão atual:
+const API_BASE = "http://localhost/ProgWebIII/backend-pedidos/public/api";
+
+// Backend real (Mac/Linux, php spark serve):
+const API_BASE = "http://localhost:8080/api";
+
+// Mock server (node mock-server.js), sem precisar do backend no ar:
 const API_BASE = "http://localhost:3001/api";
 ```
 
@@ -73,6 +78,8 @@ Endpoints usados:
 ```json
 {
   "status": "novo",
+  "totem_id": "5",
+  "totem_nome": "Mesa 5",
   "produtos": [{ "id_produto": 1, "quantidade": 2, "preco_unitario": 18.9 }]
 }
 ```
@@ -121,20 +128,10 @@ npx serve .
 Acesso: `http://localhost:3000` (ou porta indicada). Servir por HTTP evita
 problemas de CORS no `fetch`.
 
-### Trocar para o backend real
+> Veja a seção [Configuração da API](#configuração-da-api) acima para trocar
+> entre backend real e mock server.
 
-Editar `js/api.js`:
-
-```js
-const API_BASE = "http://localhost:8080/api";  // php spark serve (Mac)
-const API_BASE = "http://localhost/ProgWebIII/backend-pedidos/public/api"; // Laragon
-```
-
-## Próximas partes (preparação)
-
-O código já está estruturado para as próximas entregas:
+## Estrutura do código
 
 - `API_BASE` em `js/api.js` é a única constante a mudar entre ambientes.
-- Há um `// TODO Parte 2` em `js/api.js` marcando onde entrará o token de
-  autenticação nos headers.
 - Pastas separadas (`js/` por responsabilidade) para facilitar a extensão.

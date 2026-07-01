@@ -28,11 +28,18 @@ apontam para `pedidos_db` em `localhost` com usuário `root` sem senha.
 
 ## Rodar (Mac/Linux)
 
+⚠️ O `backend-pedidos` já ocupa a porta padrão (8080) com `php spark serve`.
+Como os dois projetos rodam ao mesmo tempo, suba a cozinha em outra porta e
+ajuste o `.env` pra combinar:
+
 ```bash
-php spark serve
+# no .env, altere:
+app.baseURL = http://localhost:8081/
+
+php spark serve --port 8081
 ```
 
-Acesso: http://localhost:8080
+Acesso: http://localhost:8081/cozinha
 
 ## Rodar (Windows com Laragon)
 

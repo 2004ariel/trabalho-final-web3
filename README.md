@@ -37,6 +37,16 @@ schema (tabelas `usuarios`, `produtos`, `pedidos`, `pedido_produtos`).
 - **Node.js** (mock server, apenas para desenvolvimento do frontend sem o
   backend real no ar)
 
+## Pré-requisitos (Mac/Linux)
+
+```bash
+brew install php mysql composer node
+brew services start mysql
+```
+
+(No Windows, o [Laragon](https://laragon.org/) já traz PHP, MySQL e
+Composer prontos.)
+
 ## Como rodar o projeto completo
 
 Cada subprojeto tem seu próprio `README.md` com instruções detalhadas de
@@ -45,13 +55,19 @@ instalação (Windows/Laragon e Mac/Linux). Ordem recomendada:
 1. **[`backend-pedidos/`](backend-pedidos/README.md)** — instalar
    dependências, configurar `.env`, criar o banco e rodar
    migrations/seeds. É este projeto que cria o schema do `pedidos_db`.
+   No Mac, sobe com `php spark serve` na porta **8080**.
 2. **[`cozinha/`](cozinha/README.md)** — instalar dependências e
    configurar `.env` apontando para o mesmo `pedidos_db` (não roda
-   migrations, apenas lê as tabelas já criadas pelo backend).
+   migrations, apenas lê as tabelas já criadas pelo backend). Como o
+   backend já usa a porta 8080, a cozinha sobe na **8081**
+   (`php spark serve --port 8081`, com o `.env` ajustado para essa porta).
 3. **[`cliente-pedidos/`](cliente-pedidos/README.md)** — abrir com
-   Live Server/`npx serve` ou apontar `js/api.js` para o backend real
-   (`http://localhost:8080/api` no Mac, ou o caminho do Laragon no
-   Windows).
+   Live Server/`npx serve`. O `js/api.js` já vem apontando para o
+   backend do Laragon por padrão; no Mac, troque a constante `API_BASE`
+   para `http://localhost:8080/api`.
+
+Os três precisam estar rodando **ao mesmo tempo** (em terminais/abas
+separadas) para o fluxo completo (loja → cozinha → relatórios) funcionar.
 
 ## Credenciais de teste (backend-pedidos)
 
