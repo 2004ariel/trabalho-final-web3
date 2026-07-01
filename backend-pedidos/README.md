@@ -86,3 +86,27 @@ exibida na tela).
 | GET    | `admin/usuarios/bloquear/{id}`     | Bloqueia/desbloqueia (superadmin)       |
 | GET    | `admin/relatorios/vendas`          | Painel de vendas (admin/superadmin)     |
 | GET    | `admin/relatorios/consumo`         | Consumo por produto (admin/superadmin)  |
+
+## API REST (consumida pelo cliente-pedidos)
+
+| Método | Rota            | Descrição                                    |
+| ------ | --------------- | --------------------------------------------- |
+| GET    | `api/status`    | Verifica se a API está no ar                  |
+| GET    | `api/produtos`  | Lista de produtos (JSON)                       |
+| POST   | `api/checkout`  | Registra um pedido (header `apiKey` obrigatório) |
+
+Body do `POST api/checkout`:
+
+```json
+{
+  "status": "novo",
+  "totem_id": "5",
+  "totem_nome": "Mesa 5",
+  "produtos": [
+    { "id_produto": 1, "quantidade": 2, "preco_unitario": 18.90 }
+  ]
+}
+```
+
+O pedido é gravado em `pedidos` (+ `pedido_produtos`) e passa a aparecer no
+painel da **cozinha** e nos relatórios de vendas/consumo.

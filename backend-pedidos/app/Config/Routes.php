@@ -6,6 +6,14 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // ---------------------------------------------------------------------
+// API REST (consumida pelo cliente-pedidos / totem)
+// ---------------------------------------------------------------------
+$routes->get('api/status',    'ApiController::status');
+$routes->get('api/produtos',  'ApiController::produtos');
+$routes->post('api/checkout', 'ApiController::checkout');
+$routes->options('api/(:any)', 'ApiController::preflight'); // preflight CORS
+
+// ---------------------------------------------------------------------
 // Autenticação
 // ---------------------------------------------------------------------
 $routes->get('login',   'UsuarioController::login');

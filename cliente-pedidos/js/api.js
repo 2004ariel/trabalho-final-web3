@@ -15,9 +15,11 @@
   // -----------------------------------------------------------
   // Configuração — ÚNICA constante a mudar entre ambientes
   // -----------------------------------------------------------
-  // Mock server (node mock-server.js):  http://localhost:3001/api
-  // Backend CI4 real (exemplo):          http://localhost/projeto-ci4/api
-  const API_BASE = "http://localhost:3001/api";
+  // Escolha o ambiente alterando APENAS esta constante:
+  //   Backend real (Windows/Laragon): http://localhost/ProgWebIII/backend-pedidos/public/api
+  //   Backend real (Mac/Linux, php spark serve): http://localhost:8080/api
+  //   Mock server (node mock-server.js):          http://localhost:3001/api
+  const API_BASE = "http://localhost/ProgWebIII/backend-pedidos/public/api";
 
   // Chave de API exigida pelo endpoint de checkout.
   const API_KEY = "D41D8CD98F00B204E9800998ECF8427E";
