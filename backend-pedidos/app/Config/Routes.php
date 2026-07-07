@@ -45,4 +45,10 @@ $routes->group('admin', ['filter' => 'admin:superadmin'], function ($routes) {
 $routes->group('admin', ['filter' => 'admin:admin'], function ($routes) {
     $routes->get('relatorios/vendas',  'RelatorioController::vendas');
     $routes->get('relatorios/consumo', 'RelatorioController::consumo');
+
+    $routes->get('produtos/criar',             'ProdutoController::criar');
+    $routes->post('produtos/salvar',           'ProdutoController::salvar');
+    $routes->get('produtos/editar/(:num)',     'ProdutoController::editar/$1');
+    $routes->post('produtos/atualizar/(:num)', 'ProdutoController::atualizar/$1');
+    $routes->post('produtos/excluir/(:num)',   'ProdutoController::excluir/$1');
 });
