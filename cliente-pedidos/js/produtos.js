@@ -24,7 +24,11 @@
 
   // Emoji ilustrativo (placeholder) por tipo de produto.
   function emojiPara(tipo) {
-    return normalizar(tipo) === "bebidas" ? "🥤" : "🍔";
+    const t = normalizar(tipo);
+    if (t.includes("bebida")) return "🥤";
+    if (t.includes("porc") || t.includes("porç")) return "🍟";
+    if (t.includes("sobrem")) return "🍰";
+    return "🌭"; // lanches / padrão — a estrela da casa
   }
 
   // -----------------------------------------------------------
